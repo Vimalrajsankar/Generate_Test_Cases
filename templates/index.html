@@ -1,0 +1,141 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Generation</title>
+</head>
+<body>
+    <h1>Content Generation</h1>
+    <form action="/generate" method="post">
+        <label for="query">Enter your query:</label><br>
+        <input type="text" id="query" name="query" size="50" required><br><br>
+        <input type="submit" value="Generate">
+
+        <br>
+        <br>
+        {% if query %}
+        <h2>Query:</h2>
+        <p>{{ query }}</p>
+        {% endif %}
+        
+        {% if generated_content %}
+        <h2>Generated Content:</h2>
+        <div>{{ generated_content | safe }}</div>
+        {% endif %}
+        <br><br>
+    </form>
+</body>
+</html>
+ -->
+
+
+
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Content Generation</title>
+ </head>
+ <body>
+     <h1>Content Generation</h1>
+     <form action="/generate" method="post">
+         <label for="query1">Enter your query 1:</label><br>
+         <input type="text" id="query1" name="query" size="50" required><br><br>
+         
+         <label for="query2">Enter your query 2:</label><br>
+         <input type="text" id="query2" name="query" size="50" required><br><br>
+         
+         <label for="query3">Enter your query 3:</label><br>
+         <input type="text" id="query3" name="query" size="50" required><br><br>
+ 
+         
+ 
+         <input type="submit" value="Generate">
+ 
+         <br>
+         <br>
+         {% if queries %}
+         <h2>Queries:</h2>
+         <ul>
+         {% for query in queries %}
+             <li>{{ query }}</li>
+         {% endfor %}
+         </ul>
+         {% endif %}
+         
+         {% if generated_content %}
+         <h2>Generated Content:</h2>
+         <ol>
+         {% for content in generated_content %}
+             <li>{{ content | safe }}</li>
+         {% endfor %}
+         </ol>
+         {% endif %}
+         <br><br>
+     </form>
+ </body>
+ </html> -->
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Generation</title>
+    <style>
+        .query-input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Content Generation</h1>
+    <form action="/generate" method="post" id="generate-form">
+        <div id="query-container">
+            <div class="query-input">
+                <label for="query1">Enter your query 1:</label><br>
+                <input type="text" id="query1" name="query" size="50" required><br><br>
+            </div>
+        </div>
+        <button type="button" onclick="addQuery()">Add Another Query</button><br><br>
+        <input type="submit" value="Generate">
+        
+        <br>
+        <br>
+        {% if queries %}
+        <h2>Queries:</h2>
+        <ul>
+        {% for query in queries %}
+            <li>{{ query }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% if generated_content %}
+        <h2>Generated Content:</h2>
+        <ol>
+        {% for content in generated_content %}
+            <li>{{ content | safe }}</li>
+        {% endfor %}
+        </ol>
+        {% endif %}
+        <br><br>
+    </form>
+
+    <script>
+        var queryCount = 1;
+
+        function addQuery() {
+            queryCount++;
+            var container = document.getElementById('query-container');
+            var div = document.createElement('div');
+            div.classList.add('query-input');
+            div.innerHTML = '<label for="query' + queryCount + '">Enter your query ' + queryCount + ':</label><br>' +
+                            '<input type="text" id="query' + queryCount + '" name="query" size="50" required><br><br>';
+            container.appendChild(div);
+        }
+    </script>
+</body>
+</html>
