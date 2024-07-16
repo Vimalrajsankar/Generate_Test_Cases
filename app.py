@@ -39,6 +39,9 @@ def generate():
 
     return render_template('index.html', queries=queries, generated_content=generated_content)
 
+def hi():
+    print("hello from vimal")
+
 if __name__ == '__main__':
     app.run(debug=True)
  
